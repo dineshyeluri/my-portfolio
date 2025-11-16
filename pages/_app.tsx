@@ -8,7 +8,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="min-h-screen flex flex-col bg-black">
       <Header />
-      <main className="flex-1 pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-6 sm:pb-8 md:pb-10">
+      <main className="flex-1 pt-40 sm:pt-44 md:pt-48 lg:pt-52 pb-6 sm:pb-8 md:pb-10">
         <Component {...pageProps} />
       </main>
       <Footer />

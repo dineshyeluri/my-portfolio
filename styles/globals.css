@@ -238,6 +238,26 @@ body {
   transform: translateY(0);
 }
 
+/* Header navigation centering */
+header {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+header > div {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+header nav {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
 /* Smooth scroll behavior */
 * {
   scroll-behavior: smooth;

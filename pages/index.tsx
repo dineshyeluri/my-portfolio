@@ -97,7 +97,7 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        <div className="space-y-24 sm:space-y-28 md:space-y-36 lg:space-y-44 xl:space-y-52 pt-56">
+        <div className="space-y-24 sm:space-y-28 md:space-y-36 lg:space-y-44 xl:space-y-52">
         {/* Hero Section */}
         <section id="home" className="min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12">
@@ -138,7 +138,7 @@ export default function Home() {
                         alt="Profile Picture"
                         width="100%"
                         height="100%"
-                        rounded={true}
+                        rounded="full"
                       />
                     </div>
                   </div>

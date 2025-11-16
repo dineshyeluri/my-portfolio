@@ -6,7 +6,7 @@ interface ImagePlaceholderProps {
   alt: string
   width?: number | string
   height?: number | string
-  rounded?: boolean
+  rounded?: boolean | 'full'
   className?: string
   showIcon?: boolean
 }
@@ -32,10 +32,16 @@ export default function ImagePlaceholder({
     setHasError(true)
   }
 
+  const getBorderRadius = () => {
+    if (rounded === 'full') return '50%'
+    if (rounded === true) return '1rem'
+    return '0'
+  }
+
   const style: React.CSSProperties = {
     width: typeof width === 'number' ? `${width}px` : width,
-    height: typeof height === 'number' && height !== 'auto' ? `${height}px` : undefined,
-    borderRadius: rounded ? '1rem' : '0',
+    height: typeof height === 'number' ? `${height}px` : height,
+    borderRadius: getBorderRadius(),
   }
 
   return (
@@ -48,7 +54,7 @@ export default function ImagePlaceholder({
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: isLoading ? 0 : 1, scale: isLoading ? 1.1 : 1 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          style={{ width: '100%', height: '100%', borderRadius: rounded ? '1rem' : '0', overflow: 'hidden' }}
+          style={{ width: '100%', height: '100%', borderRadius: getBorderRadius(), overflow: 'hidden' }}
         >
           <img
             src={src}
@@ -56,7 +62,7 @@ export default function ImagePlaceholder({
             onLoad={handleLoad}
             onError={handleError}
             className="w-full h-full object-cover"
-            style={{ borderRadius: rounded ? '1rem' : '0' }}
+            style={{ borderRadius: getBorderRadius() }}
           />
         </motion.div>
       ) : (
@@ -70,7 +76,7 @@ export default function ImagePlaceholder({
             alignItems: 'center', 
             justifyContent: 'center',
             background: 'linear-gradient(to bottom right, #1f2937, #374151, #111827)',
-            borderRadius: rounded ? '1rem' : '0' 
+            borderRadius: getBorderRadius()
           }}
         >
           {showIcon && (
@@ -109,7 +115,7 @@ export default function ImagePlaceholder({
             right: 0,
             bottom: 0,
             background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)',
-            borderRadius: rounded ? '1rem' : '0'
+            borderRadius: getBorderRadius()
           }}
           animate={{
             x: ['-100%', '100%'],
