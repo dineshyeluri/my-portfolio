@@ -11,9 +11,20 @@ export default function Home() {
   }, [])
 
   const skills = [
-    'React', 'Next.js', 'TypeScript', 'JavaScript', 'Node.js', 
-    'Python', 'Tailwind CSS', 'Git', 'MongoDB', 'PostgreSQL',
-    'AWS', 'Docker', 'GraphQL', 'REST API'
+    { name: 'React', icon: '⚛️' },
+    { name: 'Next.js', icon: '▲' },
+    { name: 'TypeScript', icon: '📝' },
+    { name: 'JavaScript', icon: 'JS' },
+    { name: 'Node.js', icon: '🟢' },
+    { name: 'Python', icon: '🐍' },
+    { name: 'Tailwind CSS', icon: '🎨' },
+    { name: 'Git', icon: '🌿' },
+    { name: 'MongoDB', icon: '🍃' },
+    { name: 'PostgreSQL', icon: '🐘' },
+    { name: 'AWS', icon: '☁️' },
+    { name: 'Docker', icon: '🐳' },
+    { name: 'GraphQL', icon: '📊' },
+    { name: 'REST API', icon: '🔗' }
   ]
 
   const projects = [
@@ -250,8 +261,11 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-3 justify-center">
             {skills.map((skill, index) => (
-              <motion.div key={skill} whileHover={{ scale: 1.1 }}>
-                <div className="skill-tile">{skill}</div>
+              <motion.div key={skill.name} whileHover={{ scale: 1.1 }}>
+                <div className="skill-tile flex items-center gap-2">
+                  <span className="text-lg">{skill.icon}</span>
+                  <span>{skill.name}</span>
+                </div>
               </motion.div>
             ))}
           </div>
