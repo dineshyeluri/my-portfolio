@@ -190,7 +190,7 @@ export default function Home() {
       >
         <div className="space-y-24 sm:space-y-28 md:space-y-36 lg:space-y-44 xl:space-y-52">
         {/* Hero Section */}
-        <section id="home" className="min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20 mt-16 sm:mt-20 md:mt-24">
+        <section id="home" className="min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20 mt-24 sm:mt-28 md:mt-32">
           <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center">
               {/* Text Content */}
@@ -200,15 +200,10 @@ export default function Home() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <div className="text-center lg:text-left space-y-3 sm:space-y-4 md:space-y-5">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <div className="mb-1 sm:mb-2 md:mb-3">
-                    <span className="text-xs xs:text-sm sm:text-base text-gray-400 font-medium">Hello, I'm</span>
-                  </div>
-                </motion.div>
+                <h2 className="text-center text-xs xs:text-sm sm:text-base text-gray-400 font-medium pt-20 mt-[15%]
+                ">
+                  Hello, I'm
+                </h2>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -221,7 +216,7 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.35 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   <div className="flex justify-center lg:justify-start">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-white/10">
@@ -237,7 +232,7 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
                 >
                   <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 font-light">
                     Full Stack Developer
@@ -246,7 +241,7 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
                     I build modern, scalable web applications with a focus on user experience and clean code. 
@@ -256,9 +251,9 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
                 >
-                  <div className="flex gap-2.5 xs:gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap pt-3 sm:pt-4">
+                  <div className="flex gap-[15px]  xs:gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap pt-3 sm:pt-4">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <a
                       href="#contact"
@@ -350,14 +345,16 @@ export default function Home() {
           {/* Removed section number as requested */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16">Skills & Technologies</h2>
 
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-wrap gap-[20px] justify-center">
             {skills.map((skill, index) => (
               <motion.div 
                 key={skill.name} 
                 whileHover={{ scale: 1.1, zIndex: 10 }}
                 style={{ position: 'relative' }}
               >
-                <div className="skill-tile flex items-center gap-4">
+                <div
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+                 className="skill-tile flex items-center justify-center">
                   <span className="text-xl">
                     <SkillIcon icon={skill.icon} />
                   </span>
@@ -376,7 +373,7 @@ export default function Home() {
           {/* Removed section number as requested */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16">Featured Projects</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[2.2rem] md:gap-10">
             {projects.map((project, index) => (
               <motion.div key={project.title} whileHover={{ y: -5 }}>
                 <div className="card p-6">
@@ -406,7 +403,7 @@ export default function Home() {
             Feel free to reach out for projects, collaborations, or opportunities.
           </p>
 
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-[15px] mb-[2.2rem] justify-center">
             <a href="mailto:dineshyeluri707@gmail.com" className="btn">Send Email</a>
             <a href="/Dineshresume.pdf" className="btn-outline">Download Resume</a>
           </div>

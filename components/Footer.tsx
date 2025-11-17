@@ -47,7 +47,7 @@ export default function Footer() {
           <p className="text-xs xs:text-sm text-gray-400 text-center md:text-left">
             © {new Date().getFullYear()} Venkata Dinesh Yeluri. All rights reserved.
           </p>
-          <div className="flex gap-8 sm:gap-9 md:gap-10">
+          <div className="flex gap-[2rem] sm:gap-9 md:gap-10">
             {socialLinks.map((social) => (
               <motion.div
                 key={social.name}
