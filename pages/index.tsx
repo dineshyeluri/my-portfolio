@@ -2,6 +2,23 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import ImagePlaceholder from '../components/ImagePlaceholder'
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaPython, 
+  FaGitAlt, 
+  FaDocker,
+  FaAws
+} from 'react-icons/fa'
+import { 
+  SiTypescript, 
+  SiJavascript, 
+  SiNextdotjs, 
+  SiTailwindcss, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiGraphql
+} from 'react-icons/si'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -11,20 +28,20 @@ export default function Home() {
   }, [])
 
   const skills = [
-    { name: 'React', icon: '⚛️' },
-    { name: 'Next.js', icon: '▲' },
-    { name: 'TypeScript', icon: '📝' },
-    { name: 'JavaScript', icon: 'JS' },
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Python', icon: '🐍' },
-    { name: 'Tailwind CSS', icon: '🎨' },
-    { name: 'Git', icon: '🌿' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'PostgreSQL', icon: '🐘' },
-    { name: 'AWS', icon: '☁️' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'GraphQL', icon: '📊' },
-    { name: 'REST API', icon: '🔗' }
+    { name: 'React', icon: 'react', level: 95, experience: '5+ years' },
+    { name: 'Next.js', icon: 'nextjs', level: 90, experience: '3+ years' },
+    { name: 'TypeScript', icon: 'typescript', level: 85, experience: '4+ years' },
+    { name: 'JavaScript', icon: 'javascript', level: 90, experience: '6+ years' },
+    { name: 'Node.js', icon: 'nodejs', level: 80, experience: '4+ years' },
+    { name: 'Python', icon: 'python', level: 75, experience: '3+ years' },
+    { name: 'Tailwind CSS', icon: 'tailwind', level: 95, experience: '2+ years' },
+    { name: 'Git', icon: 'git', level: 85, experience: '5+ years' },
+    { name: 'MongoDB', icon: 'mongodb', level: 70, experience: '2+ years' },
+    { name: 'PostgreSQL', icon: 'postgresql', level: 80, experience: '3+ years' },
+    { name: 'AWS', icon: 'aws', level: 70, experience: '2+ years' },
+    { name: 'Docker', icon: 'docker', level: 75, experience: '2+ years' },
+    { name: 'GraphQL', icon: 'graphql', level: 80, experience: '2+ years' },
+    { name: 'REST API', icon: 'api', level: 85, experience: '4+ years' }
   ]
 
   const projects = [
@@ -83,6 +100,80 @@ export default function Home() {
     }
   }
 
+  // Real-time status indicators
+  const [skillStatus, setSkillStatus] = useState<{[key: string]: string}>({})
+
+  useEffect(() => {
+    // Simulate real-time status updates
+    const interval = setInterval(() => {
+      const updatedStatus: {[key: string]: string} = {}
+      skills.forEach(skill => {
+        // Randomly assign a status to simulate real-time updates
+        const statuses = ['active', 'learning', 'proficient', 'exploring']
+        updatedStatus[skill.name] = statuses[Math.floor(Math.random() * statuses.length)]
+      })
+      setSkillStatus(updatedStatus)
+    }, 5000) // Update every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // Status indicator component
+  const StatusIndicator = ({ status }: { status: string }) => {
+    const statusStyles: {[key: string]: string} = {
+      active: 'bg-green-500',
+      learning: 'bg-yellow-500',
+      proficient: 'bg-blue-500',
+      exploring: 'bg-purple-500'
+    }
+
+    const statusTitles: {[key: string]: string} = {
+    }
+
+    return (
+      <span 
+        className={`inline-block w-2 h-2 rounded-full ${statusStyles[status] || 'bg-gray-500'} ml-1`}
+        title={statusTitles[status] || 'Experience level'}
+      />
+    )
+  }
+
+  // Icon component for rendering technology icons with brand colors
+  const SkillIcon = ({ icon }: { icon: string }) => {
+    switch (icon) {
+      case 'react':
+        return <FaReact className="text-[#61DAFB]" /> // React cyan blue
+      case 'nextjs':
+        return <SiNextdotjs className="text-white" />
+      case 'typescript':
+        return <SiTypescript className="text-[#3178C6]" /> // TypeScript blue
+      case 'javascript':
+        return <SiJavascript className="text-[#F7DF1E]" /> // JavaScript yellow
+      case 'nodejs':
+        return <FaNodeJs className="text-[#339933]" /> // Node.js green
+      case 'python':
+        return <FaPython className="text-[#3776AB]" /> // Python blue
+      case 'tailwind':
+        return <SiTailwindcss className="text-[#06B6D4]" /> // Tailwind cyan
+      case 'git':
+        return <FaGitAlt className="text-[#F05032]" /> // Git orange-red
+      case 'mongodb':
+        return <SiMongodb className="text-[#47A248]" /> // MongoDB green
+      case 'postgresql':
+        return <SiPostgresql className="text-[#4169E1]" /> // PostgreSQL blue
+      case 'aws':
+        return <FaAws className="text-[#FF9900]" /> // AWS orange
+      case 'docker':
+        return <FaDocker className="text-[#2496ED]" /> // Docker blue
+      case 'graphql':
+        return <SiGraphql className="text-[#E10098]" /> // GraphQL pink
+      case 'api':
+        return <span className="text-lg text-[#FF6B6B]">🔗</span> // REST API red
+      default:
+        return <span className="text-lg text-gray-400">⚙️</span>
+    }
+  }
+
   return (
     <>
       <Head>
@@ -99,7 +190,7 @@ export default function Home() {
       >
         <div className="space-y-24 sm:space-y-28 md:space-y-36 lg:space-y-44 xl:space-y-52">
         {/* Hero Section */}
-        <section id="home" className="min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20">
+        <section id="home" className="min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20 mt-16 sm:mt-20 md:mt-24">
           <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center">
               {/* Text Content */}
@@ -261,10 +352,19 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-3 justify-center">
             {skills.map((skill, index) => (
-              <motion.div key={skill.name} whileHover={{ scale: 1.1 }}>
-                <div className="skill-tile flex items-center gap-2">
-                  <span className="text-lg">{skill.icon}</span>
-                  <span>{skill.name}</span>
+              <motion.div 
+                key={skill.name} 
+                whileHover={{ scale: 1.1, zIndex: 10 }}
+                style={{ position: 'relative' }}
+              >
+                <div className="skill-tile flex items-center gap-4">
+                  <span className="text-xl">
+                    <SkillIcon icon={skill.icon} />
+                  </span>
+                  <span className="font-medium">{skill.name}</span>
+                  {skillStatus[skill.name] && (
+                    <StatusIndicator status={skillStatus[skill.name]} />
+                  )}
                 </div>
               </motion.div>
             ))}

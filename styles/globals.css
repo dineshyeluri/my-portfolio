@@ -139,6 +139,8 @@ body {
   background: rgba(120, 119, 198, 0.15);
   transform: translateY(-3px);
   color: #ffffff;
+  z-index: 10;
+  position: relative;
 }
 
 /* Button styles */
